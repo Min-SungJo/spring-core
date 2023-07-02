@@ -28,4 +28,22 @@ public class SingletonTest {
         assertThat(memberService1).isNotSameAs(memberService2);
         // 싱글톤 패턴을 통해 해당 객체를 하나만 생성하여 공유하여 사용할 수 있음
     }
+
+//    public static void main(String[] args) {
+//        SingletonService singletonService = new SingletonService();
+//    } -> private 이라 외부에서 호출이 불가능
+
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    void singletonServiceTest() {
+        SingletonService singletonService1 = SingletonService.getInstance();
+        SingletonService singletonService2 = SingletonService.getInstance();
+
+        System.out.println("singletonService1 = " + singletonService1);
+        System.out.println("singletonService2 = " + singletonService2); // 같은 인스턴스 객체를 반환
+        assertThat(singletonService1).isSameAs(singletonService2); // 인스턴스 비교이기에 isSameAs
+        // same 은 ==
+        // equal 는 .equals
+    }
+    // 스프링 컨테이너는 객체를 싱글톤 패턴으로 사용하기 때문에, 이전에 만든 Singleton 객체를 AppConfig 에 적용할 필요가 없음
 }
