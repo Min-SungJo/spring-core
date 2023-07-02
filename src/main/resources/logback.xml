@@ -10,8 +10,10 @@
 
     </appender>
 
-<!--    <root level="INFO">-->
-    <root level="DEBUG">
+<!-- CoreApplication-->
+    <root level="INFO">
+<!--    <root level="DEBUG">-->
+<!-- 테스트용-->
 
         <appender-ref ref="STDOUT" />
 

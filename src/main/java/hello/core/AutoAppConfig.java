@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -17,5 +20,13 @@ import org.springframework.context.annotation.FilterType;
 
 )
 public class AutoAppConfig {
+
+    // 중복 bean -> 수동 등록된 것이 우선권을 가짐
+    // Overriding bean definition for bean 'memoryMemberRepository' with a different definition
+    // application.properties 에 spring.main.allow-bean-definition-overriding=true 기입하면 중복이 허용됨
+    @Bean(name = "memoryMemberRepository")
+    MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
 
 }
