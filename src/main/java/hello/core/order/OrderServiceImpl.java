@@ -20,6 +20,8 @@ public class OrderServiceImpl implements OrderService {
 //    @Autowired private MemberRepository memberRepository;
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy; // 인터페이스에만 의존하도록 설정
+//    private  MemberRepository memberRepository;
+//    private DiscountPolicy discountPolicy; // 인터페이스에만 의존하도록 설정
 //
 //    @Autowired(required = false) // -> 주입할 대상이 없어도 동작
 //    public void setMemberRepository(MemberRepository memberRepository) { // 수정자 주입 - > 선택, 변경 가능성이 있는 경우에 사용
@@ -44,6 +46,8 @@ public class OrderServiceImpl implements OrderService {
 //        this.discountPolicy = discountPolicy;
 //    }
 
+    // 생성자 주입 -> 불변, 누락 방지, final 키워드 사용 가능(컴파일 오류 확인 가능)
+    // 프레임 워크에 의존하지 않고, 순수한 자바 언어의 특징을 잘 살리는 방법임(가끔 수정자 주입)
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
