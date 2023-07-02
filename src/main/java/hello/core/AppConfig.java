@@ -43,6 +43,7 @@ public class AppConfig {
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+//    return null; // -> 필드 주입 예시를 위한 임시 조치
     }
 
     @Bean
