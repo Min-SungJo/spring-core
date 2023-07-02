@@ -24,9 +24,8 @@ public class AutoAppConfig {
     // 중복 bean -> 수동 등록된 것이 우선권을 가짐
     // Overriding bean definition for bean 'memoryMemberRepository' with a different definition
     // application.properties 에 spring.main.allow-bean-definition-overriding=true 기입하면 중복이 허용됨
-    @Bean(name = "memoryMemberRepository")
-    MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
-
+//    @Bean(name = "memoryMemberRepository")
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
