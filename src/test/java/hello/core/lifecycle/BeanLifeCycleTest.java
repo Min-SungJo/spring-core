@@ -18,7 +18,9 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
-        @Bean(initMethod = "init", destroyMethod = "close") // destroyMethod 는 기본값으로 (inferred)을 가지고 있으며 close, shutdown 을 추론하여 호출함 -> 이름 방지하려면 "" 공백 작성
+//        @Bean(initMethod = "init", destroyMethod = "close") // destroyMethod 는 기본값으로 (inferred)을 가지고 있으며 close, shutdown 을 추론하여 호출함 -> 이름 방지하려면 "" 공백 작성
+        // 외부 라이브러리에 사용할 수 있다
+        @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("https://hello-spring.dev");
