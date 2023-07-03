@@ -8,10 +8,11 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // final 이 붙은 것을 토대로 생성자를 만듬
+//@RequiredArgsConstructor // final 이 붙은 것을 토대로 생성자를 만듬
 public class OrderServiceImpl implements OrderService {
 
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -39,10 +40,12 @@ public class OrderServiceImpl implements OrderService {
     // 1. @Autowired 생략
 //    @Autowired // -> 생성자가 하나만 있으면 생략 가능
     // 2. @RequiredArgsConstructor -> 전부 생략 가능
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+//    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        // @Qualifier 를 찾을 수 없으면 -> 명시한 이름을 가진 스프링 빈을 찾는다
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
 
 
